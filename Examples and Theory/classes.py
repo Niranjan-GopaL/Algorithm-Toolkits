@@ -12,4 +12,4 @@ class Cookie:
 cookie1 = Cookie("red")
 cookie1 = Cookie("blue")    
 
-print(cookie1)
+print("finally")
