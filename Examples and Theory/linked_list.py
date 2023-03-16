@@ -44,6 +44,7 @@ class LinkedList:
         if self.length == 0:
             self.head = last_node
         self.length += 1
+        return False
 
 
     def prepend(self, value):
@@ -54,6 +55,7 @@ class LinkedList:
         if self.length == 0:
             self.tail = first_node
         self.length += 1
+        return True
 
     def pop(self):
         # O(n) so in order to pop an element we need to traverse the linked list
@@ -104,8 +106,9 @@ class LinkedList:
             node = node.next
 
     def get_at_index(self, index):
+        # Linked lsit indexing is assumed to start at 0
         i = 0
-        if index > 0 or index < self.length:
+        if index >= 0 or index <= self.length-1:
             node = self.head
             while node:
                 if i == index:
@@ -114,6 +117,102 @@ class LinkedList:
                 node = node.next
         else:
             return None
+        
+
+    def set_at_index(self, index, value_to_set):
+        # Linked lsit indexing is assumed to start at 0
+        '''
+        i = 0
+        if index >=0 or index <= self.length-1:
+            node = self.head
+            while node:
+                if i == index:
+                    node.value = value_to_set
+                    return
+        else:
+            return None
+        '''
+        # Better solution 
+        # YOU CAN RE USE YOUR CODE!!!!!!!!!!!!!!!!!
+        node = self.get_at_index(index)
+        if node:
+            node.value = value_to_set
+            return True
+        else:
+            return False
+        
+    def insert_at_index(self, index, value_to_insert):
+        if index >= 0 or index <= self.length-1:
+            if index == 0:
+                # self.lenght += 1 ON PREPENDING THE LENGTH IS ALREADY INCREMENTED
+                # so the above is unnecessary , it would have double counted 
+                return self.prepend(value_to_insert)
+            node = self.get_at_index(index-1)
+            temp = node.next
+            node.next = Node(value_to_insert)
+            node.next.next = temp
+            self.lenght += 1
+            return True
+        else:
+            return False
+        
+
+    def remove_at_index(self, index):
+        if index >= 0 or index <= self.length-1:
+            if index == 0:
+                return self.popfirst()
+            if index == self.length-1:
+                return self.pop()
+            
+            previous_node = self.get_at_index(index-1)
+            node_to_remove = previous_node.next
+            next_node = node_to_remove.next
+
+            previous_node.next = next_node
+            node_to_remove.next = None
+
+            self.length -= 1
+            return True
+        else:
+            return False
+        
+
+    def reverse(self):
+        # HOLY GRAIL!!!!
+        self.head, self.tail = self.tail, self.head
+        current_node = self.head
+        after = current_node.next
+        before = None
+
+        '''
+        for _ in range(self.length):# We reverse the link as many times as the elements in the list
+        #  or while(current_node):
+            current_node.next = before
+            before = current_node
+            current_node = after
+            after = after.next
+
+        This was why first thought. BUT THIS FAILS AT THE LAST iteration.
+        If lenght = 3 , after each iteration (of the 3 total iterations) 
+        each links has to be reversed.
+
+        But this fails at the last iteration. since after would be None 
+        and None.next would yield error.
+
+
+        BUT KEY TAKEAWY :  the loop adtually reverses the links except at the last iterations.
+        IN THESE SITUATIONS JUST SEE IF YOU CAN RE-ARRANGE THE OPERATIONS IN FOR LOOP.
+        '''
+
+        for _ in range(self.length):
+            after = current_node.next    
+            current_node.next = before
+            before = current_node
+            current_node = after
+
+    
+
+
 
 # Creating a linked list
 my_linked_list = LinkedList(0)
@@ -153,4 +252,4 @@ print('Tail:', my_linked_list.tail.value)
 print('Length:', my_linked_list.length)
     
 
-                                                                                                                    
+                                                                                                                      
