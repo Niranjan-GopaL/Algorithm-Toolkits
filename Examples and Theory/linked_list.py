@@ -35,6 +35,8 @@ class LinkedList:
         self.tail = first_node
         self.length = 1
 
+# you get INSANELY CONFUSED between append and prependf
+
     def append(self, value):
         # O(1) 
         last_node = Node(value)
@@ -44,7 +46,7 @@ class LinkedList:
         if self.length == 0:
             self.head = last_node
         self.length += 1
-        return False
+        return True
 
 
     def prepend(self, value):
