@@ -117,7 +117,6 @@ class LinkedList:
                     return node.value
                 i += 1
                 node = node.next
-        else:
             return None
         
 
