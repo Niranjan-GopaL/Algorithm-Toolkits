@@ -98,6 +98,11 @@ class DoublyLinkedList:
         i = 0
         if index >= 0 or index <= self.length-1:
             node = self.head
+            # while node:                   CUMBERSOME
+            #     if i == index:
+            #         return node.value
+            #     i += 1
+            #     node = node.next
             '''
                 MUCH MORE ELEGENT
 
@@ -112,19 +117,14 @@ class DoublyLinkedList:
                     node = node.next
                 return node
             else:
+                tail = self.tail
+                for _ in range(self.length - index - 1):
+                    tail = tail.prev
+                return tail
+                # Normally you would have required the comparison but in above for loop NOPE
                 # for i in range(self.length - 1,0,-1):
                     # if i == index:
-
-                # MUCH BETTER WAY 
-                for _ in range(self.length - index):
-                    node = node.next
-                return node
             
-            # while node:                   CUMBERSOME
-            #     if i == index:
-            #         return node.value
-            #     i += 1
-            #     node = node.next
         else:
             return None
         
@@ -142,8 +142,9 @@ class DoublyLinkedList:
             return None
         '''
         # Better solution 
-        # YOU CAN RE USE YOUR CODE!!!!!!!!!!!!!!!!!
+        # YOU CAN RE-USE YOUR CODE!!!!!!!!!!!!!!!!!
         node = self.get_at_index(index)
+        print(node.value)
         if node:
             node.value = value_to_set
             return True
@@ -156,11 +157,19 @@ class DoublyLinkedList:
                 # self.lenght += 1 ON PREPENDING THE LENGTH IS ALREADY INCREMENTED
                 # so the above is unnecessary , it would have double counted 
                 return self.prepend(value_to_insert)
-            node = self.get_at_index(index-1)
-            temp = node.next
-            node.next = Node(value_to_insert)
-            node.next.next = temp
-            self.lenght += 1
+            # making important references
+            prev_node = self.get_at_index(index-1)
+            node_at_that_index = prev_node.next
+
+            # creating a new node
+            prev_node.next = new_node = Node(value_to_insert)
+
+            # rearranging the links
+            new_node.next = node_at_that_index
+            new_node.prev = prev_node
+            node_at_that_index.prev = new_node
+
+            self.length += 1
             return True
         else:
             return False
@@ -178,28 +187,14 @@ class DoublyLinkedList:
             next_node = node_to_remove.next
 
             previous_node.next = next_node
+            next_node.prev = previous_node
             node_to_remove.next = None
+            node_to_remove.prev = None
 
             self.length -= 1
             return True
         else:
             return False
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -224,5 +219,31 @@ my_DLL.print_DLL()
 print("\n")
 my_DLL.popfirst()
 my_DLL.popfirst()
+my_DLL.print_DLL()
+print("\n")
+
+
+'''
+Little more debugging to do in get index functions.
+
+suspicion : while popping the last elem is still point to element that was popped. and that is why
+
+'''
+
+
+print(my_DLL.get_at_index(0).value)
+print(my_DLL.get_at_index(1).value)
+print(my_DLL.get_at_index(2).value)
+print("\n")
+
+print(my_DLL.set_at_index(2,100))
+print(my_DLL.set_at_index(3,101))
+my_DLL.print_DLL()
+print("\n")
+
+my_DLL.insert_at_index(0,100000)
+my_DLL.insert_at_index(3,10000)
+
+
 
 my_DLL.print_DLL()

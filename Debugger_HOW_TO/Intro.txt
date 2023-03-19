@@ -1,0 +1,2 @@
+program STOPS AT THAT POINT and we can see what all the values 
+of the variable are

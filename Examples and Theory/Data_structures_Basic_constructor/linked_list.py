@@ -37,17 +37,27 @@ class LinkedList:
 
 # you get INSANELY CONFUSED between append and prependf
 
-    def append(self, value):
-        # O(1) 
-        last_node = Node(value)
-        temp = self.tail
-        self.tail = last_node
-        temp.next = last_node
-        if self.length == 0:
-            self.head = last_node
-        self.length += 1
-        return True
+    # THIS SEEMS LOGICALLY CORRECT BUT IT HAS A VERY IMPORTANT CONCEPTUAL MISTAKE
+    # execute in pythontutor and see
+    # def append(self, value):
+    #     # O(1) 
+    #     last_node = Node(value)kt
+    #     temp = self.tail
+    #     self.tail = last_node
+    #     if self.length == 0:
+    #         self.head = last_node
+    #     self.length += 1
+    #     return True
 
+    def append(self, value):
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
+        self.length += 1
 
     def prepend(self, value):
         # O(1)
@@ -176,9 +186,21 @@ class LinkedList:
             return True
         else:
             return False
-        
+    
 
     def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        after = temp.next
+        before = None
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+'''
+def reverse(self):
         # HOLY GRAIL!!!!
         self.head, self.tail = self.tail, self.head
         current_node = self.head
@@ -186,24 +208,24 @@ class LinkedList:
         before = None
 
         '''
-        for _ in range(self.length):# We reverse the link as many times as the elements in the list
-        #  or while(current_node):
-            current_node.next = before
-            before = current_node
-            current_node = after
-            after = after.next
+        # for _ in range(self.length):# We reverse the link as many times as the elements in the list
+        # #  or while(current_node):
+        #     current_node.next = before
+        #     before = current_node
+        #     current_node = after
+        #     after = after.next
 
-        This was why first thought. BUT THIS FAILS AT THE LAST iteration.
-        If lenght = 3 , after each iteration (of the 3 total iterations) 
-        each links has to be reversed.
+        # This was why first thought. BUT THIS FAILS AT THE LAST iteration.
+        # If lenght = 3 , after each iteration (of the 3 total iterations) 
+        # each links has to be reversed.
 
-        But this fails at the last iteration. since after would be None 
-        and None.next would yield error.
+        # But this fails at the last iteration. since after would be None 
+        # and None.next would yield error.
 
 
-        BUT KEY TAKEAWY :  the loop adtually reverses the links except at the last iterations.
-        IN THESE SITUATIONS JUST SEE IF YOU CAN RE-ARRANGE THE OPERATIONS IN FOR LOOP.
-        '''
+        # BUT KEY TAKEAWY :  the loop adtually reverses the links except at the last iterations.
+        # IN THESE SITUATIONS JUST SEE IF YOU CAN RE-ARRANGE THE OPERATIONS IN FOR LOOP.
+'''
 
         for _ in range(self.length):
             after = current_node.next    
@@ -211,46 +233,21 @@ class LinkedList:
             before = current_node
             current_node = after
 
+'''
     
+list_ = LinkedList(12)
+
+# Performing operations on the list
+
+list_.append(1)
+list_.append(2)
+list_.append(3)
+list_.append(4)
 
 
 
-# Creating a linked list
-my_linked_list = LinkedList(0)
+list_.print_list()
 
-# Performing operations on the linked list
-my_linked_list.append(1)
-my_linked_list.append(2)
-my_linked_list.append(3)
-my_linked_list.append(4)
+list_.reverse()
 
-my_linked_list.prepend(5)
-my_linked_list.prepend(6)
-my_linked_list.prepend(7)
-my_linked_list.prepend(8)
-
-print(my_linked_list.get_at_index(2))
-print(my_linked_list.get_at_index(-1))
-print(my_linked_list.get_at_index(7))
-
-print(my_linked_list.pop())
-print(my_linked_list.pop())
-print(my_linked_list.pop())
-
-print(my_linked_list.popfirst())
-print(my_linked_list.popfirst())
-print(my_linked_list.popfirst())
-
-print()
-my_linked_list.print_list()
-
-print("\n")
-
-# When linked list is empty both head and tail are None , so this will throw attribute error
-# since Node has the value attribute , None doesn't
-print('Head:', my_linked_list.head.value)
-print('Tail:', my_linked_list.tail.value)
-print('Length:', my_linked_list.length)
-    
-
-                                                                                                                      
+list_.print_list()                                                                                                    

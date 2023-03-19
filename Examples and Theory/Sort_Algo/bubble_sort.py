@@ -14,9 +14,9 @@ def bubble_sort(arr : list) -> list:
             if arr[j] > arr[j+1]:
                 arr[j] , arr[j+1] = arr[j+1], arr[j]
 
-
+    return arr
             
 
 
-l = [1,2,3,4,5]
-print(bubble_sort(l[::-1]))
+l = [1,2,3,4,5,0,-1,0,0]
+print(bubble_sort(l))
