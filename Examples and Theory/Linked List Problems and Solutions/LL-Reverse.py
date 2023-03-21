@@ -14,8 +14,9 @@ class LinkedList:
     def print_list(self):
         temp = self.head
         while temp is not None:
-            print(temp.value)
+            print(temp.value , end = ' ')
             temp = temp.next
+        print()
         
     def append(self, value):
         new_node = Node(value)
