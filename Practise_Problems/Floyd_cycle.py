@@ -30,11 +30,11 @@ if pos > 0 and pos <= len(input_list):
 fast = slow = head
 flag = 0
 while fast and fast.next:
+    slow , fast = slow.next, fast.next.next
     if slow == fast:
         print("True")
         flag = 1
         break
-    slow , fast = slow.next, fast.next.next
 
 if flag == 0:
     print("False")
