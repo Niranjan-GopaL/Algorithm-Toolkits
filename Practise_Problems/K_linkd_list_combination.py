@@ -1,3 +1,5 @@
+# inefficient 
+
 from functools import reduce
 
 class Node:

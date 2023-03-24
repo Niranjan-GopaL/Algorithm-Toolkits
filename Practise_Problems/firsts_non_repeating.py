@@ -14,5 +14,3 @@ def first_non_repeating_char(s):
 
 s = input()
 print(first_non_repeating_char(s))
-
-
