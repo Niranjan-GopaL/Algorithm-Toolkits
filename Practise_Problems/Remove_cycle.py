@@ -57,6 +57,7 @@ while head:
 
 # doesn't work
 
+
 # def remove_cycle(head,node_inside_loop):
 #     tmp = head
 #     node = tmp1 = node_inside_loop
