@@ -95,7 +95,6 @@ class DoublyLinkedList:
 
     def get_at_index(self, index):
         # DLL indexing is assumed to start at 0
-        i = 0
         if index >= 0 or index <= self.length-1:
             node = self.head
             # while node:                   CUMBERSOME
