@@ -1,3 +1,6 @@
+# DOesn't owrk for all test case
+# Bad brute force methode
+
 # n = int(input())
 l1 = list(map(int, input().split(' ')))
 

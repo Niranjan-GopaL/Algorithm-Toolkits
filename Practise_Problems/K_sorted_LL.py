@@ -26,11 +26,12 @@ k = int(input())
 linked_lists = []
 
 for _ in range(k):
-    __ = int(input())
-    input_list = list(map(int, input().split(' '))) 
+    __ = input()
+    input_list = list(map(int, input().split())) 
 
     #Creating a linked list
-    tmp = head = Node(val = input_list[0])
+    tmp = head = Node(val = input_list[0]) if input_list else Node()
+    
     for i in input_list[1:]:
         new_node = Node(val = i)
         tmp.next = new_node
@@ -38,9 +39,6 @@ for _ in range(k):
 
     # appending to the list of linked lists
     linked_lists.append(head)
-
-
-# handle edge case for linked_list having only one list later
 
 # MASTERPIECE
 while len(linked_lists) > 1:
@@ -55,7 +53,6 @@ while len(linked_lists) > 1:
         merged_lists.append(combine_two_linked_list_sorted_to_single(head_1, head_2))
     
     linked_lists = merged_lists
-
 
 head = linked_lists[0]
 while head:
