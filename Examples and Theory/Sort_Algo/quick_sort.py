@@ -22,7 +22,7 @@ def quick_sort(arr, left, right):
     return arr
 
 
-l = [9,12,-1,2,5,100,23,2]
+l = list(map(int, input().split()))
 quick_sort(l,0,len(l)-1)
 
 print(l)
