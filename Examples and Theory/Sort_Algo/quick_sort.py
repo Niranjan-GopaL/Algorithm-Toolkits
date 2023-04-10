@@ -23,6 +23,6 @@ def quick_sort(arr, left, right):
 
 
 l = list(map(int, input().split()))
-quick_sort(l,0,len(l)-1)
+l = quick_sort(l,0,len(l)-1)
 
 print(l)
