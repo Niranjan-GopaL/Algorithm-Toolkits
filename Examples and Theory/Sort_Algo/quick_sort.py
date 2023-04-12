@@ -1,7 +1,6 @@
 def swap(arr, index1, index2):
     arr[index1] , arr[index2] = arr[index2], arr[index1]
 
-
 def pivot(arr, pivot_index, end_index):
     swap_index = pivot_index
 
@@ -19,10 +18,9 @@ def quick_sort(arr, left, right):
         pivot_index = pivot(arr, left, right)
         quick_sort(arr, left, pivot_index - 1)  
         quick_sort(arr, pivot_index + 1, right)       
-    return arr
 
 
 l = list(map(int, input().split()))
-l = quick_sort(l,0,len(l)-1)
+quick_sort(l,0,len(l)-1)
 
 print(l)
