@@ -7,6 +7,7 @@ def Quick_Select(l,r):
         if li[i] <= pivot:
             li[i],li[small] = li[small],li[i]
             small +=1
+            
     # swapping pivot to  'small' position as it is now in the correct
     #  position as in that of the sorted array
     li[r],li[small] = li[small],li[r]

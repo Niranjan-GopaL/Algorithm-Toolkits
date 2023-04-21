@@ -1,4 +1,3 @@
-
 # Python3 program to calculate
 # Fibonacci no. modulo m using
 # Pisano Period
@@ -7,12 +6,12 @@
 # The length of a Pisano Period for
 # a given m ranges from 3 to m * m
 def pisanoPeriod(m):
-	previous, current = 0, 1
+	prev, curr = 0, 1
 	for i in range(0, m * m):
-		previous, current = current, (previous + current) % m
+		prev, curr = curr, (prev + curr) % m
 		
 		# A Pisano Period starts with 01
-		if (previous == 0 and current == 1):
+		if (prev == 0 and curr == 1):
 			return i + 1
 
 # Calculate Fn mod m
@@ -25,16 +24,15 @@ def fibonacciModulo(n, m):
 	# period length
 	n = n % pisano_period
 	
-	previous, current = 0, 1
+	prev, curr = 0, 1
 	if n==0:
 		return 0
 	elif n==1:
 		return 1
 	for i in range(n-1):
-		previous, current \
-		= current, previous + current
+		prev, curr = curr, prev + curr
 		
-	return (current % m)
+	return (curr % m)
 
 
 

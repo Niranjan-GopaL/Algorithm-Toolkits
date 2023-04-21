@@ -27,7 +27,7 @@ def merge(arr, temp_arr, left, mid, right):
 
 	while i <= mid and j <= right:
 
-		# There will be no inversion if arr[i] <= arr[j]
+	# There will be no inversion if arr[i] <= arr[j]
 
 		if arr[i] <= arr[j]:
 			temp_arr[k] = arr[i]
@@ -55,7 +55,6 @@ def merge(arr, temp_arr, left, mid, right):
 		j += 1
 
 	# Copy the sorted subarray into Original array
-	for loop_var in range(left, right + 1):
 		arr[loop_var] = temp_arr[loop_var]
 
 	return inv_count

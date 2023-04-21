@@ -11,7 +11,6 @@ def pivot(arr, pivot_index, end_index):
     swap(arr, pivot_index, swap_index)
     return swap_index # return the index of the swap not the element
 
-
 # Quick sort recursively on both sides of the pivot (one side at a time)
 def quick_sort(arr, left, right):
     if left < right:
