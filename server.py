@@ -11,6 +11,7 @@ print(serverSocket)
 # BInding server name and port to A SOCKET
 serverSocket.bind((serverName, serverPort))
 print("The server is ready to receive")
+
 while True:
 
     message, clientAddress = serverSocket.recvfrom(4096)
