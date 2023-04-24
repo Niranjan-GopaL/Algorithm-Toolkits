@@ -1,33 +1,28 @@
 //  find median of a matrix
-// sorted row wise
 #include<bits/stdc++.h>
 using namespace std;
 
-const int MAX = 100;
-// function to find median in the matrix
+#define ll long long
 
-// int m[][MAX] is the 
-int binaryMedian(int** m, int r ,int c)
+const int MAX = 100;
+
+int binaryMedian(ll** m, ll r ,ll c)
 {
-	int min = INT_MAX, max = INT_MIN;
-	for (int i=0; i<r; i++)
+	ll min = INT_MAX, max = INT_MIN;
+	for (ll i=0; i<r; i++)
 	{
-		// Finding the minimum element
 		if (m[i][0] < min)
 			min = m[i][0];
-		// Finding the maximum element
 		if (m[i][c-1] > max)
 			max = m[i][c-1];
 	}
 
-	int desired = (r * c + 1) / 2;
+	ll desired = (r * c + 1) / 2;
 	while (min < max)
 	{
-		int mid = min + (max - min) / 2;
-		int place = 0;
-
-		// Find count of elements smaller than or equal to mid
-		for (int i = 0; i < r; ++i)
+		ll mid = min + (max - min) / 2;
+		ll place = 0;
+		for (ll i = 0; i < r; ++i)
 			place += upper_bound(m[i], m[i]+c, mid) - m[i];
 		if (place < desired)
 			min = mid + 1;
@@ -37,29 +32,21 @@ int binaryMedian(int** m, int r ,int c)
 	return min;
 }
 
-// driver program to check above functions
 int main()
 {
-	// int r = 3, c = 3;
-	// int m[][MAX]= { {1,3,5}, {2,6,9}, {3,6,9} };
-	// cout << "Median is " << binaryMedian(m, r, c) << endl;
-	// return 0;
-
-	int R, C;
+	ll R, C;
     cin >> R >> C;
     
-	int **arr = new int*[R];
-    for (int i = 0; i < R; i++) {
-        arr[i] = new int[C];
+	ll **arr = new ll*[R];
+    for (ll i = 0; i < R; i++) {
+        arr[i] = new ll[C];
     }
 
-    for (int i = 0; i < R; i++) {
-        for (int j = 0; j < C; j++) {
+    for (ll i = 0; i < R; i++) {
+        for (ll j = 0; j < C; j++) {
             cin >> arr[i][j];
         }
     }
 
 	cout << "Median is " << binaryMedian(arr, R, C) << endl;
-
-    
 }
