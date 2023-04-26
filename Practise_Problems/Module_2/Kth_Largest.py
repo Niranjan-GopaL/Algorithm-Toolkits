@@ -17,7 +17,7 @@ def Quick_Select(l,r):
     elif k > small : return Quick_Select(small+ 1,r)
 
     # Finally small will be at k
-    else: return li[small]
+    else: return li[small]  
 
 
 
