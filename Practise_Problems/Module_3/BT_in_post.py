@@ -189,17 +189,12 @@ def preOrder(node):
 	preOrder(node.left)
 	preOrder(node.right)
 
-
-# Driver Code
 if __name__ == '__main__':
 	inorder = [4, 8, 2, 5, 1, 6, 3, 7]
 	post = [8, 4, 5, 2, 6, 7, 3, 1]
 	n = len(inorder)
 
-	# Function Call
 	root = buildTree(inorder, post, n)
 
 	print("Preorder of the constructed tree :")
-
-	# Function Call for preOrder
 	preOrder(root)

@@ -1,39 +1,32 @@
-# Python program to find minimum depth of a given Binary Tree
-
-# Tree node
 class Node:
 	def __init__(self , key):
-		self.data = key
-		self.left = None
+		self.val = key
+		self.l = None
 		self.right = None
 
 def minDepth(root):
 	# Corner Case.Should never be hit unless the code is
 	# called on root = NULL
-	if root is None:
+	if root.val == None:
 		return 0
 	
 	# Base Case : Leaf node.This accounts for height = 1
-	if root.left is None and root.right is None:
+	if root.l is None and root.right is None:
 		return 1
 	
-	# If left subtree is Null, recur for right subtree
-	if root.left is None:
+	# If l subtree is Null, recur for right subtree
+	if root.l is None:
 		return minDepth(root.right)+1
 	
-	# If right subtree is Null , recur for left subtree
+	# If right subtree is Null , recur for l subtree
 	if root.right is None:
-		return minDepth(root.left) +1
+		return minDepth(root.l) +1
 	
-	return min(minDepth(root.left), minDepth(root.right))+1
-
-# Driver Program
+	return min(minDepth(root.l), minDepth(root.right))+1
+	
 root = Node(1)
-root.left = Node(2)
+root.l = Node(2)
 root.right = Node(3)
-root.left.left = Node(4)
-root.left.right = Node(5)
+root.l.l = Node(4)
+root.l.right = Node(5)
 print (minDepth(root))
-
-# This code is contributed by Nikhil Kumar Singh(nickzuck_007)	
-    

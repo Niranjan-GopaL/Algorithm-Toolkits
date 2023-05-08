@@ -47,7 +47,7 @@ def level(root):
             if node:
                 level.append(node.val)
                 q.append(node.l)
-                q.append(node.r)
+            q.append(node.r)
         if level:
             final.append(level)
 
@@ -113,7 +113,8 @@ print("\n")
 
 print("Level Order Traversal")
 print(level(root))
-# If you wanna flatten the list then :- flat_list = [item for sublist in l for item in sublist]
+# If you wanna flatten the list then :- flat_list = [item for sublist in l for item in sublist]<TabPanel value={} index={} dir={theme.direction}>
+  
 print("\n")
 
 print(f'Number of nodes :- {Number_of_nodes(root)}')

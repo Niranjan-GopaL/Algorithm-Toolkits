@@ -1,10 +1,4 @@
 # EFFICIENT ------------------------------------------------------------------------------------------------------------------------------------->
-
-# Python3 program to construct tree using inorder
-# and preorder traversals
-
-# A binary tree node has data, pointer to left child
-# and a pointer to right child
 class Node:
 	
 	def __init__(self, x):
@@ -73,7 +67,6 @@ def printInorder(node):
 	print(node.data, end = " ")
 	printInorder(node.right)
 
-# Driver code
 if __name__ == '__main__':
 	
 	mp = {}
@@ -92,9 +85,6 @@ if __name__ == '__main__':
 	
 	printInorder(root)
 
-# This code is contributed by mohit kumar 29
-
-
 
 
 
@@ -102,11 +92,6 @@ if __name__ == '__main__':
 
 # INEFFICIENT ------------------------------------------------------------------------------------------------------------------------------------->
 
-
-# Python program to construct tree using inorder and
-# preorder traversals
-
-# A binary tree node
 class Node:
 	
 	# Constructor to create a new node
@@ -176,5 +161,3 @@ root = buildTree(inOrder, preOrder, 0, len(inOrder)-1)
 # Let us test the build tree by printing Inorder traversal
 print ("Inorder traversal of the constructed tree is")
 printInorder(root)
-
-# This code is contributed by Nikhil Kumar Singh(nickzuck_007)

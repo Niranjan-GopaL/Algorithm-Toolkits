@@ -1,5 +1,3 @@
-# How to construct a BST is lvl order traversal array is given
-
 class Node:
 	def __init__(self, x):
 		self.val = x
@@ -34,8 +32,3 @@ def printTree(root):
 nums = [1, 2, 3, 4, 5, 6, 6, 6, 6]
 root = buildTree(nums)
 printTree(root)
-
-
-# program for quicksort
-
-
