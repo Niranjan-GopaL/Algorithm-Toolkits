@@ -1,11 +1,17 @@
 import math
-import collections as c
+from collections import deque
+
 
 class Node:
     def __init__(self,val):
         self.val = val
         self.l = None
         self.r = None
+
+
+# <--------------------------------------------TRAVERSELS!!!!!!----------------------------------------------------------------------------
+# DPS (DEPTH FIRST SEARCH)
+
 
 # lnr
 def Inorder(root):
@@ -35,12 +41,13 @@ def level(root):
 
     final = []
 
-    q = c.deque()
+    q = deque()
     q.append(root)
 
     while q:
         qLen = len(q)
         level = []
+        # WE ARE MUTATING THE QUEUE WHILE PARSING OVER IT , CAREFUL !!!!!!!
         for i in range(qLen):
             node = q.popleft()
             # we might add null to queue
@@ -50,18 +57,42 @@ def level(root):
             q.append(node.r)
         if level:
             final.append(level)
-
     return final
 
 
+# Version 2
+def levelOrder(root):
+    Q = deque()
+    Q.append(root)
+    while Q:
+        temp = Q.popleft()
+        print(temp.data, end = ' ')
+        if temp.left != None:
+            Q.append(temp.left)
+        if temp.right != None:
+            Q.append(temp.right)
+
+# < ---------------- BASIC OPERATIONS ON A BT -------------------------------------------------------->
+
+
+def height_of_tree(root):
+    if not root.l and not root.r:
+        return 0
+    else:
+        return 1 + max(height_of_tree(root.l), height_of_tree(root.r)) 
+
+
+# height of a node in a tree
+
+
+# level of a node in a tree
+
+
+# depth of a node in a tree 
 
 
 def Number_of_nodes(root):
     if root:
-        # c = 1
-        # c += Find_num_node(root.l)
-        # c += Find_num_node(root.r)
-        # return c ---------------------------------\||/
         return 1 + Number_of_nodes(root.l) + Number_of_nodes(root.r)
     else:
         return 0
@@ -73,8 +104,6 @@ def Max(root):
         return max(root.val, Max(root.l), Max(root.r))
     else:
         return -math.inf
-
-
 
 
 root = Node(1)
