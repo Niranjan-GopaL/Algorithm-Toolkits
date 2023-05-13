@@ -6,7 +6,7 @@ class Node:
 		self.left = None
 		self.right = None
 
-# 
+
 
 
 # path to a node
@@ -20,7 +20,7 @@ def buildTree_from_lvl_order_traversal(nums):
 	q.append(root)
 	# to keep track of where we are in the array
 	i = 1
-	
+
 	while i < len(nums):
 		curr = q.popleft()
 		# adding next element in nums as left

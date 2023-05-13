@@ -13,7 +13,7 @@ class Node:
 # 0 and len -1. The function doesn't do any error
 # checking for cases where inorder and preorder
 # do not form a tree
-def buildTree(inn, pre, inStrt, inEnd):
+def buildTree1(inn, pre, inStrt, inEnd):
 	
 	global preIndex, mp
 
@@ -36,15 +36,15 @@ def buildTree(inn, pre, inStrt, inEnd):
 
 	# Using index in Inorder traversal,
 	# construct left and right subtress
-	tNode.left = buildTree(inn, pre, inStrt,
+	tNode.left = buildTree1(inn, pre, inStrt,
 						inIndex - 1)
-	tNode.right = buildTree(inn, pre, inIndex + 1,
+	tNode.right = buildTree1(inn, pre, inIndex + 1,
 							inEnd)
 
 	return tNode
 
 # This function mainly creates an
-# unordered_map, then calls buildTree()
+# unordered_map, then calls buildTree1()
 def buldTreeWrap(inn, pre, lenn):
 	
 	global mp
@@ -55,9 +55,9 @@ def buldTreeWrap(inn, pre, lenn):
 	for i in range(lenn):
 		mp[inn[i]] = i
 
-	return buildTree(inn, pre, 0, lenn - 1)
+	return buildTree1(inn, pre, 0, lenn - 1)
 
-# This function is here just to test buildTree()
+# This function is here just to test buildTree1()
 def printInorder(node):
 
 	if (node == None):
@@ -88,17 +88,6 @@ if __name__ == '__main__':
 
 
 
-
-
-# INEFFICIENT ------------------------------------------------------------------------------------------------------------------------------------->
-
-class Node:
-	
-	# Constructor to create a new node
-	def __init__(self, data):
-		self.data = data
-		self.left = None
-		self.right = None
 
 """Recursive function to construct binary of size len from
 Inorder traversal in[] and Preorder traversal pre[]. Initial values
@@ -161,3 +150,11 @@ root = buildTree(inOrder, preOrder, 0, len(inOrder)-1)
 # Let us test the build tree by printing Inorder traversal
 print ("Inorder traversal of the constructed tree is")
 printInorder(root)
+
+
+
+
+
+
+
+
