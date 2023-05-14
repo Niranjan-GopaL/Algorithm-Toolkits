@@ -64,6 +64,7 @@ def construct_tree_fromPostandIno(post:list, ino:list):
 	return build(0, len(ino)-1)	
 
 
+
 # construct tree from pre and in
 def construct_tree_fromPreandIno(pre:list, ino:list):
 	if not ino or not pre:
@@ -136,7 +137,7 @@ def printTree(root):
 # io
 # nums = [1, 2, 3, "null", 5, "null", 6, 6, 6]
 # root = buildTree_from_lvl_order_traversal(nums)
-# printTree(root)
+printTree(root)
 
 ino = [2,3,5,4,6]
 post =  [2,5,6,4,3]
