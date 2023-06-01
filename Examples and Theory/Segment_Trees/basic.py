@@ -14,26 +14,31 @@ def build(idx, l, r):
 
     # base case
     if l == r : 
-        segments[idx] = l
+        segment_tree[idx] = l
         return
     # normal case
     mid = (l+r)//2
     build(2*idx + 1, l , mid)
     build(2*idx + 2, mid+1, r)
 
-    # How you want to build the segment tree [RMQ, RSQ], you can do it below
-    # RMaxQ
-    segments[idx] = min(segments[2*idx+1], segments[2*idx+2])
+    # How you want to build the segment tree [RMQ, RSQ], you can do it below  -----\/
+    # RMQ
+    if inp[segment_tree[2*idx+1]] < inp[segment_tree[2*idx+2]]:
+        segment_tree[idx]= segment_tree[2*idx+1]
+    else:
+        segment_tree[idx]= segment_tree[2*idx+2]
 
-
+    '''
+    Constructs the same tree that sir gave [ look at ST and BIT pptx in Course materials folder in the repo ]
+    '''
 
 
 
 
 inp = [24,3,45,12,7,36,73,87]
-segments = [-inf]*(4*len(inp))
+segment_tree = [-inf]*(4*len(inp))
 build(0,0,len(inp)-1)
-print(segments)
+print(segment_tree)
 
 
 
