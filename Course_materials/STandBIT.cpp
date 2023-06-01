@@ -89,16 +89,15 @@ int * constructST (int A[], int n)
 	int *ST = new int[2 * n - 1];
 	
 	for (i = n - 1; i < 2 * n - 1; ++i)
-		
-	ST[i] = i - n + 1;
+		ST[i] = i - n + 1;
 
 	i = n - 2;
 	while (i > -1)    {
-	if (A[ST[2 * i + 1]] < A[ST[2 * i + 2]])
-		ST[i] = ST[2 * i + 1];
-	else
-		ST[i] = ST[2 * i + 2];
-	i--;
+		if (A[ST[2 * i + 1]] < A[ST[2 * i + 2]])
+			ST[i] = ST[2 * i + 1];
+		else
+			ST[i] = ST[2 * i + 2];
+		i--;
 	}
   
 return ST;
@@ -129,7 +128,7 @@ int  main ()
 
 	n = k;
 	A[n] = INT_MAX;
-	int *ST = constructST (A, n);
+	int *ST = constructST (A, n); 
 	cin >> l >> r;
 	cout << "RMQ" << l << " and  " << r << " = " << RMQ (ST, A,n,l,r)<<endl;
 
