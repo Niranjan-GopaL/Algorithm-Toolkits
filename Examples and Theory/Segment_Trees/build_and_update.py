@@ -45,17 +45,18 @@ def query_and_find(idx,a,b,l,r):
         print(segment_tree[idx])
         return segment_tree[idx]
 
-    if r<=a or l>=b:
+    elif r<=a or l>=b:
         return inf
+    
+    else:
+        mid = (l+r)//2
+        left_ans = query_and_find(2*idx+1,a,b,l,mid)
+        right_ans = query_and_find(2*idx+1,a,b,l,mid) 
 
-    mid = (l+r)//2
-    left_ans = query_and_find(2*idx+1,a,b,l,mid)
-    right_ans = query_and_find(2*idx+1,a,b,l,mid)
+        print(left_ans)
+        print(right_ans)
 
-    print(left_ans)
-    print(right_ans)
-
-    return min(left_ans, right_ans)
+        return min(left_ans, right_ans)
 
 
     # # if either side returns inf, we can just return the other side
