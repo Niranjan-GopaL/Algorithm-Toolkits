@@ -11,17 +11,17 @@ Seg trees are used when we want "range queries" in "log time"
 
 from math import inf
 
-def build(idx, l, r):
+def build(idx, ss, se):
     '''Building Segment tree'''
 
     # base case
-    if l == r : 
-        segment_tree[idx] = inp[l]
+    if ss == se : 
+        segment_tree[idx] = inp[ss]
         return
     # normal case
-    mid = (l+r)//2
-    build(2*idx + 1, l , mid)
-    build(2*idx + 2, mid+1, r)
+    mid = (ss+se)//2
+    build(2*idx + 1, ss , mid)
+    build(2*idx + 2, mid+1, se)
 
     # How you want to build the segment tree [RMQ, RSQ], you can do it below  -----\/
     # RMQ
@@ -38,20 +38,20 @@ def build(idx, l, r):
 
 
 
-def query_and_find(idx,a,b,l,r):
+def query_and_find(idx,qs,qe,ss,se):
 
-    # if segtree's interval is COMPLETELY inside given [a,b]
-    if l>=a and r<=b:
+    # if segtree's interval is COMPLETELY inside given [qs,qe]
+    if ss>=qs and se<=qe:
         print(segment_tree[idx])
         return segment_tree[idx]
 
-    elif r<=a or l>=b:
+    elif se<qs or ss>qe: 
         return inf
     
     else:
-        mid = (l+r)//2
-        left_ans = query_and_find(2*idx+1,a,b,l,mid)
-        right_ans = query_and_find(2*idx+1,a,b,l,mid) 
+        mid = (ss+se)//2
+        left_ans = query_and_find(2*idx+1,qs,qe,ss,mid)
+        right_ans = query_and_find(2*idx+1,qs,qe,ss,mid) 
 
         print(left_ans)
         print(right_ans)

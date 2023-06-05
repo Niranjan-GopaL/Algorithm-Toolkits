@@ -19,4 +19,4 @@ for idx,elem in enumerate(inp):
 # But update is constly, since we need to update the entire prefix array from that idx on
 
 
-# Seg_tree is 
+# Seg_tree optimises this
