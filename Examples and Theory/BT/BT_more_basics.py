@@ -45,24 +45,16 @@ def build_tree(arr):
     if not arr:
         return None
 
-    # Create root node
     root = Node(arr[0])
 
-    # Traverse the array and build the tree
     n = len(arr)
     for i in range(n):
-        # Left child index
-        left_child_idx = 2 * i + 1
-        # Right child index
-        right_child_idx = 2 * i + 2
-
         # Create left child if within array bounds
-        if left_child_idx < n:
-            root.left = Node(arr[left_child_idx])
-
-        # Create right child if within array bounds
-        if right_child_idx < n:
-            root.right = Node(arr[right_child_idx])
+        if 2*i+1 < n:
+            root.left = Node(arr[2*i+1])
+			
+        if 2*i+2 < n:
+            root.right = Node(arr[2*i+2])
 
         # Update root to the next node
         root = root.left if root.left else root.right
