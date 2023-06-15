@@ -13,7 +13,7 @@ def path_to_node(root,target):
 	pass
 
 
-# 
+
 # iterative version of BT construction from lvl order traversal
 def buildTree_from_lvl_order_traversal(nums):
 	if not nums:
@@ -40,7 +40,34 @@ def buildTree_from_lvl_order_traversal(nums):
 			i += 1
 	return root
 
+# BEST WAY TO CREATE BT from lvl order traversal
+def build_tree(arr):
+    if not arr:
+        return None
 
+    # Create root node
+    root = Node(arr[0])
+
+    # Traverse the array and build the tree
+    n = len(arr)
+    for i in range(n):
+        # Left child index
+        left_child_idx = 2 * i + 1
+        # Right child index
+        right_child_idx = 2 * i + 2
+
+        # Create left child if within array bounds
+        if left_child_idx < n:
+            root.left = Node(arr[left_child_idx])
+
+        # Create right child if within array bounds
+        if right_child_idx < n:
+            root.right = Node(arr[right_child_idx])
+
+        # Update root to the next node
+        root = root.left if root.left else root.right
+
+    return root
 
 # construct tree from post and in
 def construct_tree_fromPostandIno(post:list, ino:list):
@@ -135,8 +162,8 @@ def printTree(root):
 
 
 # io
-# nums = [1, 2, 3, "null", 5, "null", 6, 6, 6]
-# root = buildTree_from_lvl_order_traversal(nums)
+nums = [1, 2, 3, "null", 5, "null", 6, 6, 6]
+root = buildTree_from_lvl_order_traversal(nums)
 printTree(root)
 
 ino = [2,3,5,4,6]
