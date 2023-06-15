@@ -7,7 +7,7 @@
 '''
 
 
-# Returns sum of arr[0..index].  
+# Returns sum of arr    [0..index].  
 # Partial sums of array elements are stored in BITree[].
 def getsum(BITTree,i):
     s = 0 #initialize result
