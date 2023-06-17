@@ -4,49 +4,39 @@ import time
 time.sleep(7)
 p.typewrite(
 '''
-from typing import List
+class Node:
+    def __init__(self,val):
+        self.val = val
+        self.l = None
+        self.r = None
 
+def build(arr,i,n):
+    if i>=n :return None
 
-class FenwickTree:
-    def _init_(self, N: int):
-        self.N = N
-        self.arr = [0] * N
-        
-    def sum(self, i: int):  # i is 1-indexed
-        s = 0
-        while i:
-            s += self.arr[i-1]
-            i -= i & -i
-        return s
-    
-    def add(self, i: int, k):  # i is 1-indexed
-        while i <= self.N:
-            self.arr[i-1] += k
-            i += i & -i
+    root = Node(arr[i])
+    root.l = build(arr,2*i+1)
+    root.r = build(arr,2*i+2)
 
+    return root
 
-def numTeams(rating):
-    N = len(rating)
-    fw = FenwickTree(N)
-    bw = FenwickTree(N)
-    
-    r = sorted((n, i) for i, n in enumerate(rating))
-    for n, i in reversed(r):
-        bw.add(N-i, 1)
-    
-    ans = 0
-    for n, i in r:
-        bw.add(N-i, -1)
-        a, b = fw.sum(i+1), bw.sum(N-i)
-        ans += a * b + (i - a) * (N - i - b - 1)
-        fw.add(i+1, 1)
-    return ans
+def kthSmallest(root, k):
+    n=0
+    stack=[]
+    cur=root
+    while cur or stack :
+        while cur :
+            stack.append(cur)
+            cur=cur.left
+        cur=stack.pop()
+        n +=1
+        if n==k :
+            return cur.val
+        cur = cur.right
 
-
-ratings = [2, 5, 3, 4, 1]
-answer = numTeams(ratings)
-print("Number of teams:", answer)
-
-'''
+l = input().split()
+k = int(input())
+l = [int(i) for i in l if i != 'null']
+root = build(l,0,len(l))
+print(kthSmallest(root, k))'''
 )
 p.typewrite(['enter'])
