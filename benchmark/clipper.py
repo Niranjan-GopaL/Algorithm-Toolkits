@@ -4,39 +4,26 @@ import time
 time.sleep(7)
 p.typewrite(
 '''
-class Node:
-    def __init__(self,val):
-        self.val = val
-        self.l = None
-        self.r = None
 
-def build(arr,i,n):
-    if i>=n :return None
+ll find_rank(node*root, ll x){
+    ll r = 0;
 
-    root = Node(arr[i])
-    root.l = build(arr,2*i+1)
-    root.r = build(arr,2*i+2)
+    while (root){
+    if(root->data==x) {
+        r = r+Num(root->right);
+        return r;
+    }
+    else if (root->data<x){
+        root = root->right;
+    }
+    else {
+        r = r+1+Num(root->right);
+        root = root->left;
+    }
+    }
+    return r;
+}
 
-    return root
-
-def kthSmallest(root, k):
-    n=0
-    stack=[]
-    cur=root
-    while cur or stack :
-        while cur :
-            stack.append(cur)
-            cur=cur.left
-        cur=stack.pop()
-        n +=1
-        if n==k :
-            return cur.val
-        cur = cur.right
-
-l = input().split()
-k = int(input())
-l = [int(i) for i in l if i != 'null']
-root = build(l,0,len(l))
-print(kthSmallest(root, k))'''
+'''
 )
 p.typewrite(['enter'])
