@@ -1,4 +1,4 @@
-// #include <bits/stdc++.h>
+#include <bits/stdc++.h>
 #include <iostream>
 
 using namespace std;
@@ -19,13 +19,13 @@ void updateBIT(int BIT[], int n, int i, int X)
 {
 	while (i <= n)
 	{
-	BIT[i] += X;
-	i += i & (-i);
+		BIT[i] += X;
+		i += i & (-i);
 	}
 }
 
 
-int * constructBIT(int A[], int n)
+int* constructBIT(int A[], int n)
 {
 	int *BIT = new int[n+1];
 	for (int i=1; i<=n; i++)
