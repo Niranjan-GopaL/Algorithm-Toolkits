@@ -1,132 +1,143 @@
-import math
+class Node:
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
+        self.height = 1
 
 
-class TreeNode:
-    def init(self, val):
-        self.val = val
-        self.height = 0
-        self.cnt = self.freq = 1
-        self.left = self.right = None
+class AVLTree:
+    def __init__(self):
+        self.root = None
 
-    def str(self):
-        return str(self.val)
+    def insert(self, key):
+        self.root = self._insert(self.root, key)
 
-
-def getBalance(root):
-    if root is None:
-        return 0
-    return height(root.left) - height(root.right)
-
-
-
-def height(root):
-    if root is None:
-        return -1
-    return root.height
-
-
-def RightRotate(y: TreeNode):
-    x = y.left
-    t2 = x.right
-    x.right = y
-    y.left = t2
-    y.height = 1 + max(height(y.left), height(y.right))
-    y.cnt = y.freq + count(y.right) + count(y.left)
-    x.height = 1 + max(height(x.left), height(x.right))
-    x.cnt = x.freq + count(x.right) + count(x.left)
-    return x
-
-
-def LeftRotate(x: TreeNode):
-    y = x.right
-    t2 = y.left
-    y.left = x
-    x.right = t2
-    x.height = 1 + max(height(x.left), height(x.right))
-    x.cnt = x.freq + count(x.right) + count(x.left)
-    y.height = 1 + max(height(y.left), height(y.right))
-    y.cnt = y.freq + count(y.right) + count(y.left)
-    return y
-
-
-def count(root):
-    if root is None:
-        return 0
-    return root.cnt
-
-
-def AVLInsert2(root, val):
-    if root is None:
-        return TreeNode(val)
-    elif root.val == val:
-        root.freq += 1
-        root.cnt += 1
-        return root
-    else:
-        if val > root.val:
-            root.right = AVLInsert2(root.right, val)
-        elif val < root.val:
-            root.left = AVLInsert2(root.left, val)
-        root.height = 1 + max(height(root.left), height(root.right))
-        root.cnt = root.freq + count(root.right) + count(root.left)
-        balance = getBalance(root)
-        if balance > 1 and val < root.left.val:
-            return RightRotate(root)
-        if balance < -1 and val > root.right.val:
-            return LeftRotate(root)
-        if balance > 1 and val > root.left.val:
-            root.left = LeftRotate(root.left)
-            return RightRotate(root)
-        if balance < -1 and val < root.right.val:
-            root.right = RightRotate(root.right)
-            return LeftRotate(root)
-    return root
-
-
-def search(root, val):
-    if root is None:
-        return None
-    if root.val == val:
-        return root
-    elif root.val < val:
-        return search(root.right, val)
-    else:
-        return search(root.left, val)
-
-
-def inorder(root):
-    if root:
-        inorder(root.left)
-        print(root, end = " ")
-        inorder(root.right)
-
-
-def AVLInsert(root, val,  i):
-    global ans
-    temp = rank(root, math.floor(val/2.00000001))
-    ans += i - (temp - 1)
-    root = AVLInsert2(root, val)
-    return root
-
-
-def rank(node, x):
-    r = 1
-    while node:
-        if node.val == x:
-            r += count(node.right)
-            return r
-        elif node.val < x:
-            node = node.right
+    def _insert(self, root, key):
+        if not root:
+            return Node(key)
+        
+        if key < root.key:
+            root.left = self._insert(root.left, key)
         else:
-            r += node.freq + count(node.right)
-            node = node.left
-    return r
+            root.right = self._insert(root.right, key)
+        
+        root.height = 1 + max(self._get_height(root.left), self._get_height(root.right))
 
+        balance = self._get_balance(root)
 
-n = int(input())
-arr = list(map(int, input().split()))
-root = None
-ans = 0
-for i in range(n-1, -1, -1):
-    root = AVLInsert(root, arr[i], i)
-print(ans)
+        if balance > 1:
+            if key < root.left.key:
+                return self._rotate_right(root)
+            else:
+                root.left = self._rotate_left(root.left)
+                return self._rotate_right(root)
+        
+        if balance < -1:
+            if key > root.right.key:
+                return self._rotate_left(root)
+            else:
+                root.right = self._rotate_right(root.right)
+                return self._rotate_left(root)
+        
+        return root
+
+    def delete(self, key):
+        self.root = self._delete(self.root, key)
+
+    def _delete(self, root, key):
+        if not root:
+            return root
+        
+        if key < root.key:
+            root.left = self._delete(root.left, key)
+        elif key > root.key:
+            root.right = self._delete(root.right, key)
+        else:
+            if not root.left:
+                return root.right
+            elif not root.right:
+                return root.left
+            else:
+                successor = self._get_min_value_node(root.right)
+                root.key = successor.key
+                root.right = self._delete(root.right, successor.key)
+        
+        root.height = 1 + max(self._get_height(root.left), self._get_height(root.right))
+        balance = self._get_balance(root)
+
+        if balance > 1:
+            if self._get_balance(root.left) >= 0:
+                return self._rotate_right(root)
+            else:
+                root.left = self._rotate_left(root.left)
+                return self._rotate_right(root)
+        
+        if balance < -1:
+            if self._get_balance(root.right) <= 0:
+                return self._rotate_left(root)
+            else:
+                root.right = self._rotate_right(root.right)
+                return self._rotate_left(root)
+        
+        return root
+
+    def _rotate_left(self, z):
+        y = z.right
+        T2 = y.left
+
+        y.left = z
+        z.right = T2
+
+        z.height = 1 + max(self._get_height(z.left), self._get_height(z.right))
+        y.height = 1 + max(self._get_height(y.left), self._get_height(y.right))
+
+        return y
+
+    def _rotate_right(self, z):
+        y = z.left
+        T3 = y.right
+
+        y.right = z
+        z.left = T3
+
+        z.height = 1 + max(self._get_height(z.left), self._get_height(z.right))
+        y.height = 1 + max(self._get_height(y.left), self._get_height(y.right))
+
+        return y
+
+    def _get_height(self, node):
+        if not node:
+            return 0
+        return node.height
+
+    def _get_balance(self, node):
+        if not node:
+            return 0
+        return self._get_height(node.left) - self._get_height(node.right)
+
+    def _get_min_value_node(self, root):
+        current = root
+        while current.left:
+            current = current.left
+        return current
+
+    def _preorder_traversal(self, node):
+        if node:
+            print(node.key, end=" ")
+            self._preorder_traversal(node.left)
+            self._preorder_traversal(node.right)
+
+    def preorder_traversal(self):
+        self._preorder_traversal(self.root)
+
+    # Add other traversal methods (inorder, postorder) if needed
+
+# Usage example
+avl_tree = AVLTree()
+avl_tree.insert(10)
+avl_tree.insert(20)
+avl_tree.insert(30)
+avl_tree.preorder_traversal()  # Output: 20 10 30
+avl_tree.delete(10)
+avl_tree.preorder_traversal()  # Output: 20 30
