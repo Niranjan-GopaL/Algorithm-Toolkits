@@ -10,9 +10,29 @@ class AVLTree:
     def __init__(self):
         self.root = None
 
+    # gives the height of the node. 
+    # THIS IS A VERY USEFUL wayy cuz it takes care of NULL nodes to have -1 ( here 0 ) height
+    def _get_height(self, node):
+        if  node is None:
+            return 0
+        return node.height
+
+    # returns if its balanced or not
+    def _get_balance(self, node):
+        if  node is None:
+            return 0
+        return self._get_height(node.left) - self._get_height(node.right)
+
+    def _get_min_value_node(self, root):
+        current = root
+        while current.left:
+            current = current.left
+        return current
+
     def insert(self, key):
         self.root = self._insert(self.root, key)
 
+    # assume all unique keys 
     def _insert(self, root, key):
         if not root:
             return Node(key)
@@ -22,8 +42,10 @@ class AVLTree:
         else:
             root.right = self._insert(root.right, key)
         
+        # updating height of the inserted node
         root.height = 1 + max(self._get_height(root.left), self._get_height(root.right))
 
+        # checking if the Node is balanced ( difference of height of children nodes are less than a bound)
         balance = self._get_balance(root)
 
         if balance > 1:
@@ -106,38 +128,35 @@ class AVLTree:
 
         return y
 
-    def _get_height(self, node):
-        if not node:
-            return 0
-        return node.height
 
-    def _get_balance(self, node):
-        if not node:
-            return 0
-        return self._get_height(node.left) - self._get_height(node.right)
-
-    def _get_min_value_node(self, root):
-        current = root
-        while current.left:
-            current = current.left
-        return current
-
-    def _preorder_traversal(self, node):
+    def _lnr(self, node):
         if node:
+            self._lnr(node.left)
             print(node.key, end=" ")
-            self._preorder_traversal(node.left)
-            self._preorder_traversal(node.right)
+            self._lnr(node.right)
 
-    def preorder_traversal(self):
-        self._preorder_traversal(self.root)
+    def lnr(self):
+        self._lnr(self.root)
 
     # Add other traversal methods (inorder, postorder) if needed
+
 
 # Usage example
 avl_tree = AVLTree()
 avl_tree.insert(10)
 avl_tree.insert(20)
 avl_tree.insert(30)
-avl_tree.preorder_traversal()  # Output: 20 10 30
+avl_tree.insert(40)
+avl_tree.insert(0)
+avl_tree.insert(0)
+avl_tree.insert(35)
+avl_tree.insert(300)
+
+avl_tree.lnr()  
+print()
+print()
+
+
 avl_tree.delete(10)
-avl_tree.preorder_traversal()  # Output: 20 30
+avl_tree.lnr()  
+print()
