@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int sum_contained_at_idx(int idx,vector<int> vec){
+int Prefix_SUM(int idx,vector<int> vec){
     int sum_ = 0;
     while(idx){
         sum_ = sum_ + vec[idx];
@@ -44,5 +44,8 @@ int main(){
     // Prints the BIT
     for (int i = 1; i < vec.size()+1; i++)
         cout << BIT[i] << " ";
+
+    int idx; cin >> idx;
+    cout << " Prefix sum for the idx " << idx << " is" << Prefix_SUM(idx,BIT) << endl;
 
 }
