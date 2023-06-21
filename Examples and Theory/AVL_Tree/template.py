@@ -3,7 +3,7 @@ class Node:
         self.key = key
         self.left = None
         self.right = None
-        self.height = 1
+        self.height = 0
 
 
 class AVLTree:
@@ -14,10 +14,10 @@ class AVLTree:
     # THIS IS A VERY USEFUL wayy cuz it takes care of NULL nodes to have -1 ( here 0 ) height
     def _get_height(self, node):
         if  node is None:
-            return 0
+            return -1
         return node.height
 
-    # returns if its balanced or not
+    # returns if its balanced or not 
     def _get_balance(self, node):
         if  node is None:
             return 0
@@ -29,11 +29,22 @@ class AVLTree:
             current = current.left
         return current
 
+
+
+
+
+
+
+
     def insert(self, key):
         self.root = self._insert(self.root, key)
 
     # assume all unique keys 
+    # returns root of tree after inserting
     def _insert(self, root, key):
+
+        # initialy root is None. so it creates a new Node 
+        # and returns it so that it can be be the new root
         if not root:
             return Node(key)
         
@@ -42,32 +53,51 @@ class AVLTree:
         else:
             root.right = self._insert(root.right, key)
         
-        # updating height of the inserted node
+        # updating height of all the node
         root.height = 1 + max(self._get_height(root.left), self._get_height(root.right))
 
-        # checking if the Node is balanced ( difference of height of children nodes are less than a bound)
+        # checking if the Node is balanced 
+        # ( difference of height of children nodes are less than a bound)
         balance = self._get_balance(root)
 
+
+
+        # balance = 2 means its either ll or lr
         if balance > 1:
+        # based on the KEY-VALUE that we inserted we can predict what type we have !!!!
+
+            # this is ll
             if key < root.left.key:
                 return self._rotate_right(root)
+            # this is lr
             else:
                 root.left = self._rotate_left(root.left)
                 return self._rotate_right(root)
         
+
+        # balance = -2 means its either rr or rl
         if balance < -1:
+        # based on the KEY-VALUE that we inserted we can predict what type we have !!!!
+
+            # this is rr
             if key > root.right.key:
                 return self._rotate_left(root)
+            # this is rl
             else:
                 root.right = self._rotate_right(root.right)
                 return self._rotate_left(root)
         
         return root
 
+
+
+
+
+
     def delete(self, key):
         self.root = self._delete(self.root, key)
 
-    def _delete(self, root, key):
+    def _delete(self, root, key): 
         if not root:
             return root
         
@@ -75,16 +105,24 @@ class AVLTree:
             root.left = self._delete(root.left, key)
         elif key > root.key:
             root.right = self._delete(root.right, key)
+        # when you find the node with given key 
         else:
+
+            # handling cases where the node is only-child. 
+            # if l is not there then return r
+            # if r is not there then return l
             if not root.left:
                 return root.right
             elif not root.right:
                 return root.left
+            # if both of the above conditions are failed that means that it is a a node with both l and r
+            # in which case we CHANGE KEY VALUE to SUCCESSOR and then recursively call the delete on successor
             else:
                 successor = self._get_min_value_node(root.right)
                 root.key = successor.key
                 root.right = self._delete(root.right, successor.key)
         
+        # same as what we did in insertion case
         root.height = 1 + max(self._get_height(root.left), self._get_height(root.right))
         balance = self._get_balance(root)
 

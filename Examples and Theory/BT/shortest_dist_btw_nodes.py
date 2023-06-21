@@ -22,8 +22,8 @@ def pathToNode(root, path, k):
   
     # Check if k is found in l or r
     # sub-tree
-    if ((root.l != None and pathToNode(root.l, path, k)) or
-            (root.r!= None and pathToNode(root.r, path, k))):
+    if ((root.l  and pathToNode(root.l, path, k)) or
+            (root.r and pathToNode(root.r, path, k))):
         return True
   
     # If not present in subtree rooted with root,
