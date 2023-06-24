@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
+#include <algorithm>
+
 #include <iostream>
 using namespace std;
+
 
 #define ll long long
 
@@ -34,9 +37,26 @@ void dfs(ll i,bool color){
      
 }
 
-
 void solve(){
     cin >> n >> m;
+
+/*
+
+
+3 3
+
+1 2
+2 3
+1 3
+
+0-> 1-> 0-> 2->
+1-> 0-> 1-> 2->
+2-> 1-> 2-> 0->
+
+THIS ISN'T A PROBLEM HERE, BUT IT WILL BE IN FUTURE.
+
+*/
+
 
     for(ll i=0;i<m;i++){
         cin >> u >> v;  

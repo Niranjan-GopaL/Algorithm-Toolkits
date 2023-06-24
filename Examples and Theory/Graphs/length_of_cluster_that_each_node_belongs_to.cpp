@@ -26,11 +26,12 @@ bool vis[10005]; // and not THIS --->   vector<bool> vis[10005]
 void solve(){
     cin >> n >> m;
 
-    // m lines each start with 'k' and the k numbers are given who are friends
+    // m lines each start with 'k' and then k numbers are given who are friends
     for(ll i=0; i < m; i++){
         ll k; cin >> k;
 
-        for(ll j=0; j+1 <k; j++){
+        // loop needs to run k-1 times cuz inside we read 2 inps once
+        for(ll j=0; j <k; j++){
             cin >> u >> v;
             u--;v--;
             edges[u].push_back(v);
@@ -38,9 +39,9 @@ void solve(){
         }
     }
 
-    for(ll i;i<n;i++){
-        for(ll j;j<edges[i].size();j++)
-                cout << edges[i][j] << "-> ";
+    for(ll i=0;i<n;i++){
+        for(ll j=0;j<edges[i].size();j++)
+                cout << i << "-> "<< edges[i][j] << "-> ";
         cout << "\n";
     }
 
@@ -56,7 +57,7 @@ void solve(){
                 ll x = q.front();
                 q.pop();
 
-                if ( !vis[i] ) continue; // if the node was visited already go to the next node in queue
+                if ( !vis[x] ) continue; // if the node was visited already go to the next node in queue
                 vis[i] = 1; 
                 cluster.push_back(x);
 
@@ -69,10 +70,9 @@ void solve(){
 
             
             // answer array will mark all nodes with the size of the cluster that they are part of
-            for(ll node : cluster){
-                
+            for(ll node : cluster)
                 a[node] = cluster.size();
-            }
+            
 
         }
     }
@@ -81,6 +81,8 @@ void solve(){
     // answer array has size of the cluster that it is a part of
     for (ll i = 0; i < n; i++)
         cout << a[i] << " ";
+
+    
 }
 
 
