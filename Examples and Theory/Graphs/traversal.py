@@ -69,7 +69,7 @@ class Graph:
                 print("")
 
 
-    def dfs(self, start_node):
+    def dfs(self, start_node): 
         visited = [False] * self.n
         self._dfs(start_node, visited)
 
@@ -82,19 +82,20 @@ class Graph:
             if not visited[neighbor]:
                 self._dfs(neighbor, visited)
 
+
     def bfs(self, start_node):
         visited = [False] * self.n
-        queue = deque([start_node])
+        Q = deque([start_node])
         visited[start_node] = True
 
-        while queue:
-            node = queue.popleft()
+        while Q:
+            node = Q.popleft()
             print(node, end=" ")
 
             for neighbor in self.hashmap[node]:
                 if not visited[neighbor]:
                     visited[neighbor] = True
-                    queue.append(neighbor)
+                    Q.append(neighbor)
 
 
 def sum_of_all_degrees(graph:Graph):
@@ -118,6 +119,20 @@ def sum_of_all_degrees(graph:Graph):
             cout += len(links)
 
         return (cin,cout)
+
+
+
+c = [0]*10005
+edges = [[]]*10005
+
+
+def dfs(node):
+    mn = c[node]
+    for X in edges[node]:
+        mn = min(mn,dfs(X))
+    return mn
+
+
 
 
 
@@ -158,7 +173,7 @@ for _ in range(m):
     g.addEdge(a,b)
 
 g.print_graph()
-
+  
 
 print("DFS traversal:")
 g.dfs(0)
