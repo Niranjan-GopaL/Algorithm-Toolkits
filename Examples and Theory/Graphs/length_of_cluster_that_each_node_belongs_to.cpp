@@ -25,6 +25,8 @@ bool vis[10005]; // and not THIS --->   vector<bool> vis[10005]
 
 void solve(){
     cin >> n >> m;
+
+    // m lines each start with 'k' and the k numbers are given who are friends
     for(ll i=0; i < m; i++){
         ll k; cin >> k;
 
@@ -36,9 +38,11 @@ void solve(){
         }
     }
 
-
-
-
+    for(ll i;i<n;i++){
+        for(ll j;j<edges[i].size();j++)
+                cout << edges[i][j] << "-> ";
+        cout << "\n";
+    }
 
     for(ll i=0;i<n;i++){
 
@@ -63,9 +67,13 @@ void solve(){
                 
             }
 
+            
             // answer array will mark all nodes with the size of the cluster that they are part of
-            for(ll node : cluster)
+            for(ll node : cluster){
+                
                 a[node] = cluster.size();
+            }
+
         }
     }
 
