@@ -22,6 +22,7 @@ ll ans;
 void solve(){
     ll t;
     cin >> n >> t;
+    
     for(ll i=0; i<n-1; i++)cin >> a[i];
 
     ll cur = 0;
