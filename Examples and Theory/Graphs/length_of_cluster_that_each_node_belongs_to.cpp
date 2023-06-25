@@ -26,16 +26,29 @@ bool vis[10005]; // and not THIS --->   vector<bool> vis[10005]
 void solve(){
     cin >> n >> m;
 
-    // m lines each start with 'k' and then k numbers are given who are friends
-    for(ll i=0; i < m; i++){
-        ll k; cin >> k;
+    // // m lines each start with 'k' and then k numbers are given who are friends
+    // for(ll i=0; i < m; i++){
+    //     ll k; cin >> k;
 
-        // loop needs to run k-1 times cuz inside we read 2 inps once
-        for(ll j=0; j <k; j++){
-            cin >> u >> v;
-            u--;v--;
-            edges[u].push_back(v);
-            edges[v].push_back(u);
+    //     // loop needs to run k-1 times cuz inside we read 2 inps once
+    //     for(ll j=0; j <k; j++){
+    //         cin >> u >> v;
+    //         u--;v--;
+    //         edges[u].push_back(v);
+    //         edges[v].push_back(u);
+    //     }
+    // }
+
+
+    for(ll i=0;i<m;i++){
+        cin >> k;vector<ll> v(k);
+        for(ll j=0;j<k;j++){
+            cin >> v[j];--v[j];
+        }
+
+        for(ll j =0;j+1<k;j++){
+            edges[v[j]].push_back(v[j+1]);
+            edges[v[j+1]].push_back(v[j]);
         }
     }
 
@@ -72,7 +85,6 @@ void solve(){
             // answer array will mark all nodes with the size of the cluster that they are part of
             for(ll node : cluster)
                 a[node] = cluster.size();
-            
 
         }
     }
