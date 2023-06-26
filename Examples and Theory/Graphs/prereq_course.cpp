@@ -7,16 +7,17 @@ ll n,m,q,t;
 ll u,v;
 vector<ll> edges[10005];
 bool vis[10005];
+ll a[10005];
 
 
-int dfs(i,b,pos){
+int dfs(ll i,ll b,ll pos){
     if (vis[i])return 0;
 
-    for(x : edges[i]){
+    vis[i]=1;
+    for(ll x : edges[i]){
         if (!vis[x]){
             if (x == b)return 1;
             
-            vis[x] = 1;
             pos = dfs(x,b,pos);
         }
     }
@@ -24,20 +25,30 @@ int dfs(i,b,pos){
 }
 
 
-
 void  solve(){
     cin >> n;
     cin >> t;
-    for(ll i = 0; i < t/2; ++i){
+    // cout << n  << t<< endl;
+
+    for(ll i = 0; i < t; ++i){
         cin >> u >> v;
+        // cout << u << v << endl;
         edges[u].push_back(v); // directed graph
     }
 
     cin >> q;
-    for(ll i = 0; i < q/2; ++i){
-        cin > a >> b;
-        dfs(a,b)
+    // cout << q << endl;
+
+    ll a1,b1;
+    for(ll i = 0; i < q; ++i){
+        cin >> a1 >> b1;
+        // for(ll j=0;j<n;++j)vis[i]=0; //below is much faster and better way to do this
+        memset(vis, 0, sizeof(vis));
+        a[i]=dfs(a1,b1,0);
     }
+
+    for(ll i = 0;i<q; i++)
+        cout << a[i] << " ";
 
 
 }
@@ -46,3 +57,54 @@ void  solve(){
 int main(){
     solve();
 }
+/*
+
+
+3
+3
+1 2 1 0 2 0
+2
+1 0 1 2
+
+out
+1 1
+
+
+
+
+2
+0
+2
+1 0 0 1
+
+out
+0 0
+
+
+
+
+
+
+
+2
+1
+1 0
+2
+0 1 1 0
+
+out
+0 1
+
+
+
+
+
+5
+4
+0 1 1 2 2 3 0 3
+4
+0 3 3 2 4 2 1 3
+
+
+
+*/

@@ -65,7 +65,8 @@ void solve(){
             queue<ll> q;
             q.push(i);
 
-            // the queue will be empty only when all nodes in cluster is visited exactly once
+            // the queue will be empty only when all nodes in 
+            // cluster is visited exactly once !!!!!!!!!
             while(!q.empty()){
                 ll x = q.front();
                 q.pop();
@@ -79,7 +80,7 @@ void solve(){
                     if (!vis[adjacent])
                         q.push(adjacent);
                 
-            }
+            }   
 
             
             // answer array will mark all nodes with the size of the cluster that they are part of
