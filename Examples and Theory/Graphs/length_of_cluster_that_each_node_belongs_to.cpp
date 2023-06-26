@@ -68,8 +68,7 @@ void solve(){
             // the queue will be empty only when all nodes in 
             // cluster is visited exactly once !!!!!!!!!
             while(!q.empty()){
-                ll x = q.front();
-                q.pop();
+                ll x = q.front();q.pop();
 
                 if ( !vis[x] ) continue; // if the node was visited already go to the next node in queue
                 vis[i] = 1; 
