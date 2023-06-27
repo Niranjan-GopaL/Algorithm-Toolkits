@@ -26,7 +26,7 @@ W
 1 2 3 4
 W (sort the adjacent elements)
 '''
-
+    
 
 edges = [ [] for _ in range(n+1)]
 # label will act as the vistited array

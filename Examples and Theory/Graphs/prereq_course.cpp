@@ -10,7 +10,19 @@ bool vis[10005];
 ll a[10005];
 
 
-int dfs(ll i,ll b,ll pos){
+
+/* Aditya's test case
+4
+4
+0 1 1 2 0 3 3 2
+6
+0 2 0 3 3 1 3 2 2 3 2 0
+
+
+
+*/
+
+bool dfs(ll i,ll b,ll pos){
     if (vis[i])return 0;
 
     vis[i]=1;
@@ -23,6 +35,27 @@ int dfs(ll i,ll b,ll pos){
     }
     return pos;
 }
+
+
+bool bfs(ll i,ll b){
+    queue<ll> q; q.push(i);
+
+    while(!q.empty()){
+        ll x = q.front();q.pop();
+
+        if (vis[x])continue;
+        vis[x] = 1;
+
+        for (ll y: edges[x])
+            if (!vis[y]){
+                if (y == b)return 1;
+                q.push(y);
+            }
+    }
+    return 0;
+}
+
+
 
 
 void  solve(){
@@ -44,7 +77,8 @@ void  solve(){
         cin >> a1 >> b1;
         // for(ll j=0;j<n;++j)vis[i]=0; //below is much faster and better way to do this
         memset(vis, 0, sizeof(vis));
-        a[i]=dfs(a1,b1,0);
+        // a[i]=dfs(a1,b1,0);
+        a[i]=bfs(a1,b1);
     }
 
     for(ll i = 0;i<q; i++)
