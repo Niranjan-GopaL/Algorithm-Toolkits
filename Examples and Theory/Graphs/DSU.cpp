@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include <iostream>
 using namespace std;
 
 #define ll long long
@@ -39,9 +38,7 @@ ll union1(ll a, ll b){
     if (a!=b)parent[b]=a;
 }
 
-
-
-
+// create a union function in a DSU that uses union by rank
 
 
 

@@ -1,5 +1,5 @@
 ## 
 
--[ ] DSU COlin's impl
--[ ] Cycle detection
--[ ] Dikjstra
+-[+] DSU Colin's impl
+-[] Cycle detection, topological sort
+-[] Dikjstra
