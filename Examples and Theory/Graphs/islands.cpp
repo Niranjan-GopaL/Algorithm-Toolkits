@@ -21,23 +21,58 @@ string s,t;
 ll ans;
 
 
+
+
+
 void solve(){
     cin >> n >> m;
-    vector<ll> inp[arr_template_size];
+    vector<ll> grid[arr_template_size];
 
     fi(0,m){
         fj(0,n){
-        cin >> v;
-        inp[i].pb(v);    
+        cin >> v;grid[i].pb(v);    
         }
     }
 
-    
+
+    ll H = n; // same as number of rows in grid
+    ll W = grid[0].size(); // same as m
+
+
+    vector<pair<ll,ll>> vis;
+
+    fi(0,H){
+        fj(0,W){
+
+
+
+
+        }
+    }
+
+
+
+    queue<pair<ll,ll>> q; q.push({0,0});
+    while(!q.empty()){
+        ll f = q.front().first; ll s = q.front().second;
+
+
+
+    }
+
+
 
 
 
 
 }
+
+
+
+
+
+
+
 
 int main(){
     solve();
