@@ -16,9 +16,8 @@ directions=[(0,1),(0,-1),(1,0),(-1,0)]
 def dfs(i,j):
     if is_valid(i,j) and grid[i][j]:
         grid[i][j]=0
-        for dr,dc in directions:
-            new_row, new_col = i+dr, j+dc
-            dfs(new_row,new_col)
+        for di,dj in directions:
+            dfs(i+di,j+dj)
 
 
 

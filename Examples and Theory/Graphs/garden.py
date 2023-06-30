@@ -32,6 +32,9 @@ edges = [ [] for _ in range(n+1)]
 # label will act as the vistited array
 label = [0]*(n+1)
 pairs = list(map(int,input().split()))
+
+
+
 for i in range(0,m*2,2):
     edges[pairs[i]].append(pairs[i+1])
     edges[pairs[i+1]].append(pairs[i])
@@ -49,7 +52,9 @@ for i in range(1,n+1):
             options = [1,2,3,4]
 
             for y in edges[x]:
-                if label[y]: options.remove(label[y])
+                if label[y] in options: 
+                    options.remove(label[y])
+
 
             print(f"options x had was : {options}")
             label[x] = options[0]

@@ -1,3 +1,4 @@
+// Usual template stuff
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -23,35 +24,5 @@ ll ans;
 
 vector<ll> edges[arr_template_size];
 bool vis[arr_template_size];
-vector<ll> dist(arr_template_size,INT_MAX);
 
 
-vector<ll> dijkstra(ll n,ll src){
-
-    priority_queue<          
-        pair<ll,ll>,        
-        vector<pair<ll,ll>>,
-        greater<pair<ll,ll>>        
-    > pq;
-
-    dist[src] = 0;
-    pq.push({0,src});
-
-    while(!pq.empty()){
-        ll dis = pq.top().first;
-        ll x  = pq.top().second;
-        pq.pop();
-
-        for (ll y : edges[x]){
-
-        }
-
-    }
-
-
-}
-
-
-void solve(){
-
-}

@@ -1,3 +1,8 @@
+
+
+                <number> <cmd> <motion>
+
+
 ## Quit
 
 - ZQ (that easy, so don't use :q! this is wayyy faster) this is force exit
@@ -26,6 +31,7 @@
 
 ## New day new vim stuff 
 
+
 - Understood :x :q can close tab and you can reopen them  by ctrl + shift + t 
 - Played around 
 - YP replicates entire line you can 4YP
@@ -37,7 +43,6 @@
 
 - ctrl + u / d move half a page up or down
 - { and  } are super useful to move one paragraph up or down
-
 
 -   $ : End of the line 
     ^ : Start of the line

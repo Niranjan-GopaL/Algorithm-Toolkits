@@ -1,4 +1,4 @@
-#![allow(unused_variables)]
+![allow(unused_variables)]
 #![allow(unused_must_use)]
 use std::io::{self, prelude::*};
  

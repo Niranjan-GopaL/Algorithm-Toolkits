@@ -44,9 +44,6 @@ void solve(){
     fi(0,H){
         fj(0,W){
 
-
-
-
         }
     }
 
