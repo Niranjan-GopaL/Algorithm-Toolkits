@@ -19,3 +19,11 @@
 -[] Video 1 dfs
 -[] Exercise top row t and p
 -[] Video 2 dfs
+-[] Exercise top row t and p
+-[] Understand what he meant by shortest path and longest path in )(n)
+-[] Gratitude
+-[] Solve 3 CT questions
+
+
+
+

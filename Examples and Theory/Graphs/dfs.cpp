@@ -1,5 +1,6 @@
 // Usual template stuff
 #include <bits/stdc++.h>
+#include <algorithm>
 using namespace std;
 
 #define ll             long long
@@ -26,3 +27,36 @@ vector<ll> edges[arr_template_size];
 bool vis[arr_template_size];
 
 
+
+ll discovery_time[arr_template_size];
+ll finish_time[arr_template_size];
+ll phi[arr_template_size];
+ll cnt = 0;
+
+void dfs(){
+    vis[u] = 1;discovery_time[u]=cnt++;
+}
+
+
+
+
+void solve(){
+
+    fi(0,n){
+        cin >> u >> v;
+        edges[u].pb(v);
+        edges[v].pb(u);
+    }
+    //  PRINT YOU ADJACENCY LIST.
+
+    fi(0,n){
+        for(ll j=0;j<edges[i].size();j++)
+                cout << i << "-> "<< edges[i][j] << "-> ";
+        cout << "\n";
+    }
+
+    fi(0,arr_template_size)phi[i]=-2;
+
+    
+
+}
