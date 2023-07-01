@@ -1,6 +1,6 @@
 
 
-                <number> <cmd> <motion>
+               <cmd>  <number>  <motion>
 
 
 ## Quit
@@ -61,3 +61,63 @@ so d$  d^ v$ v^
 - Delete the rest of the line :- d$ delete from cursor to EOL
 
             BETTER WAY :- D (del from cursor to EOL)
+
+
+- instead of ctrl + 1,2,3,4 to go to tabs do this instead
+
+            alt + 1 2 3 4 5 6 7 are much more easier and reachable
+
+- move a block:- 
+
+        
+                9dd (so deletes next 9 lines and copies it the register)
+
+
+- THIS IS GOLD !!!!!!
+
+
+words, paragraphs , parenthesis are TEXT OBJECTS in vim
+and you can do whatever you want over them (check out other TEXT OBJECTS IN VIM)
+
+            daw  :  (around)  deletes enitre word including the spaces
+            diw  :  (inside)  if in middle of a word and you wanna del that word without the spaces that it TRAILS 
+            dap  :  if you are in the middle of paragraph, 
+                    this deletes the entire paragraph
+
+            di(  :  dels everything inside ()
+            di{  :  dels everything inside {}
+            di[  :  dels everything inside []
+
+            da(  :  dels everything inside () INCLDUING THE BRACKETS
+            da{  :  dels everything inside {} INCLDUING THE BRACKETS
+            da[  :  dels everything inside [] INCLDUING THE BRACKETS
+
+
+d   - del
+i/a - (insert) (around) they are modifiers
+p   - means paragraph
+([{ - just paranthesis are also text objects
+
+
+
+            this is a little bit wierd but anywhere in line if we have "" you
+            don't even have to be inside the 
+
+
+- THIS IS JUST GOLD !!!!!!!!!!!
+
+
+:earlier 5m   ------- WE CAN GO BACK TO THE STATE WE WERE  5 MINUTES AGO 
+:earlier 15m  ------- WE CAN GO BACK TO THE STATE WE WERE  15 MINUTES AGO 
+:earlier 20m  ------- WE CAN GO BACK TO THE STATE WE WERE  20 MINUTES AGO
+:later 20m    ------- WE CAN GO BACK TO THE STATE WE WILL BE IN 20 MIN (loll) kinda like REDO tbh
+
+
+- 
+
+        - b
+        - e (end of next word)
+        - w (begin of next word)
+
+
+
