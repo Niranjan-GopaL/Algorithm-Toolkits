@@ -10,7 +10,7 @@ def dfs(i):
     t+=1; finish_time[i]=t
 
 
-
+    
 def stack_dfs(i):
     t = 0
     st = [i]
