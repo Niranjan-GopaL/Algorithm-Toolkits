@@ -5,7 +5,13 @@ using namespace std;
 #define fi(a,b)        for(ll i=a; i<b; i++)
 #define fj(a,b)        for(ll j=a; j<b; j++)
 #define pb             push_back
+/*
 
+
+
+
+
+*/
 
 // global stuff will be initialized fine
 ll n,m,k,q,x,y,z;
