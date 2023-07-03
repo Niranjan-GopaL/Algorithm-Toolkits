@@ -1,19 +1,20 @@
 import queue
+from collections import defaultdict,deque
 
 class Graph:
 	
-	def __init__(self, V):
-		self.V = V;
-		self.l = [[] for i in range(V)]
+	def __init__(self, n):
+		self.n = n
+		self.l = [[] for i in range(n)]
 		
 	def addedge(self, V1, V2):
-		self.l[V1].append(V2);
-		self.l[V2].append(V1);
+		self.l[V1].append(V2)
+		self.l[V2].append(V1)
 
 	# in1 and in2 are two vertices of graph
 	# which are actually indexes in pset[]
 	def bfs(self, in1, in2):
-		visited = [0] * self.V
+		visited = [0] * self.n
 		que = queue.Queue()
 		visited[in1] = 1
 		que.put(in1)
@@ -62,45 +63,39 @@ def SieveOfEratosthenes(v):
 	
 
 def compare(num1, num2):
-	
-	# To compare the digits
-	s1 = str(num1)
-	s2 = str(num2)
-	c = 0
-	if (s1[0] != s2[0]):
-		c += 1
-	if (s1[1] != s2[1]):
-		c += 1
-	if (s1[2] != s2[2]):
-		c += 1
-	if (s1[3] != s2[3]):
-		c += 1
 
-	# If the numbers differ only by a single
-	# digit return true else false
-	return (c == 1)
+    s1 = str(num1); s2 = str(num2); c = 0
+
+    for i in range(4):
+        if (s1[i] != s2[i]):
+            c += 1
+
+    return (c == 1)
 	
+
 def shortestPath(num1, num2):
 	
 	pset = []
+	# pset is prime set := contains all the 4 digit prime numbers
 	SieveOfEratosthenes(pset)
 
 	g = Graph(len(pset))
+	
+    # making all pairs from this huge pile of prime numbers
 	for i in range(len(pset)):
 		for j in range(i + 1, len(pset)):
 			if (compare(pset[i], pset[j])):
 				g.addedge(i, j)	
 
-	# Since graph nodes represent indexes
-	# of numbers in pset[], we find indexes
-	# of num1 and num2.
+	# Graph nodes ==> indexes in pset[] 
+    # so we retrive the indexes of num1 and num2.
 	in1, in2 = None, None
-	for j in range(len(pset)):
-		if (pset[j] == num1):
-			in1 = j
-	for j in range(len(pset)):
-		if (pset[j] == num2):
-			in2 = j
+	for i in range(len(pset)):
+		if (pset[i] == num1):
+			in1 = i
+	for i in range(len(pset)):
+		if (pset[i] == num2):
+			in2 = i
 
 	return g.bfs(in1, in2)
 

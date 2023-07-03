@@ -25,11 +25,16 @@ def sieve(n):
             for j in range(i*i, n+1, i):
                 is_prime[j] = False
 
-    for i in range(2, n+1):
+    count = 0
+    for i in range(1000, n+1):
         if is_prime[i]:
             print(i, end=" ")
+            count += 1
 
+    # print(f'\nNumber of 4 digit prime numbers are : {count}')
 
-n = 100
-prime_smaller_than(n)
-sieve(n)
+n = 10000
+# prime_smaller_than(n)
+
+for i in range(1000):
+    sieve(n)

@@ -16,14 +16,17 @@
 -[+] Take down all notes today
 
 
--[] Video 1 dfs
--[] Exercise top row t and p
--[] Video 2 dfs
--[] Exercise top row t and p
--[] Understand what he meant by shortest path and longest path in )(n)
--[] Gratitude
--[] Solve 3 CT questions
+-[+] Video 1 dfs
+-[+] Exercise top row t and p
+-[+] Video 2 dfs
+-[+] Exercise top row t and p
+-[+] Understand what he meant by shortest path and longest path in (n)
+-[+] Gratitude
+-[+] Solve 3 CT questions
 
 
-
-
+-[+] Finish intro to evectors and evalues 
+-[+] Start Diagonalization and go ham (only rough notes re-write later)
+-[] Start working on Orthogonal Video
+-[] Start Projection and go ham (only rough notes rewrite later)
+-[] Rewrite Diagonalization notes

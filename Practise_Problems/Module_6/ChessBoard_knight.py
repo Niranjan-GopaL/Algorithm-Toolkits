@@ -15,6 +15,7 @@ def solve():
     q = deque([(si,sj,depth)])
 
     while q:
+
         print("\n---------Queue iteration--------------")
         x = q.popleft()
 
@@ -23,7 +24,6 @@ def solve():
         print(f' i : {x[0]} j : {x[1]} and the current depth is : {x[2]}\n')
         if (x[0],x[1]) == (ti,tj) :
             return x[2]
-
 
         for di,dj in dir_:
             i,j = x[0]+di, x[1]+dj 
@@ -61,6 +61,6 @@ vis=[[0 for i in range(9)] for j in range(9)]
 print(vis)
 
 si,sj = [1, 1]
-ti,tj = [6, 1]
+ti,tj = [8, 8]
 
 print(solve())

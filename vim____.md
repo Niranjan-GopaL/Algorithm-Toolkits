@@ -2,6 +2,11 @@
 
                <cmd>  <number>  <motion>
 
+                c   <number>  <motion>
+                d   <number>  <motion>
+                
+
+
 
 ## Quit
 
@@ -119,5 +124,64 @@ p   - means paragraph
         - e (end of next word)
         - w (begin of next word)
 
+        -r (replace stuff)
+
+        -c (ALL THE STUFF WE DO WITH d can be done with c, 
+            c dels and put you in insert mode directly )
+
+            caw  :  (around)  deletes enitre word including the spaces AND PUTS YOU IN INSERT MODE
+            ciw  :  (inside)  if in middle of a word and you wanna del that word without the spaces that it TRAILS 
+            cap  :  if you are in the middle of paragraph, 
+                   this deletes the entire paragraph AND PUTS YOU IN INSERT MODE
+
+            ci(  :  dels everything inside () AND PUTS YOU IN INSERT MODE
+            ci{  :  dels everything inside {} AND PUTS YOU IN INSERT MODE
+            ci[  :  dels everything inside [] AND PUTS YOU IN INSERT MODE
+
+            ca(  :  dels everything inside () INCLDUING THE BRACKETS AND PUTS YOU IN INSERT MODE
+            ca{  :  dels everything inside {} INCLDUING THE BRACKETS AND PUTS YOU IN INSERT MODE
+            ca[  :  dels everything inside [] INCLDUING THE BRACKETS AND PUTS YOU IN INSERT MODE
 
 
+
+            Delete the rest of the line :- d$ delete from cursor to EOL
+            BETTER WAY :- D (del from cursor to EOL)
+
+            WELL NOW YOU CAN DO  C and do whatever D does but go into insert mode less often
+
+
+
+- after you had your fun with ci{ daa etc,
+  you can jump to 20% of the file by --- 20%
+  you can jump to 50% of the file by --- 50%
+  you can jump to 100% of the file by --- 100%
+
+
+-   search using /  (search forward)  
+
+        n goes forward 
+        N goes backward
+
+    search using ?  (search backward)
+
+        n goes forward 
+        N goes backward
+
+
+-   o makes a new paragraph below
+    O makes a new paragraph ABOVE
+
+
+
+- 
+
+                ' goes back to the position tht you were in a last time
+
+
+- THIS IS VERYYYY USEFUL (you might need a lil regex to use it to it's full power)
+
+            :s/lol/lollllll      replaces next occurance of lol with lollll
+            :s/lol/lollllll/g    replaces ALL occurance of lol with lollll
+
+
+            
