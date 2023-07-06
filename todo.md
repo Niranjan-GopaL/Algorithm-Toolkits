@@ -1,5 +1,45 @@
 ## 
 
+-[+] Learn spanning trees
+-[+] Dijkstra's in DAG
+-[] Vector to tree etc
+-[] Check if your answers were right
+-[+] Nails too long 
+-[+] GIve clothes for washing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# archive
 -[+] DSU Colin's impl
 -[+] Cycle detection, topological sort
 -[+] Write gratitude

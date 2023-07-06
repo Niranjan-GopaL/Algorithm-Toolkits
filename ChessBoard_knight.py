@@ -60,7 +60,7 @@ def solve():
 vis=[[0 for i in range(9)] for j in range(9)]
 print(vis)
 
-si,sj = [1, 1]
-ti,tj = [6, 1]
+si,sj = [6, 6]
+ti,tj = [1, 1]
 
 print(solve())
