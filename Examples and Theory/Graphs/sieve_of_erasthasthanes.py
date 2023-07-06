@@ -1,4 +1,6 @@
 from math import sqrt
+from time import time
+
 
 # Traditional way to generate prime numbers less than n :- O(n^3/2)
 def is_prime(n):
@@ -36,5 +38,22 @@ def sieve(n):
 n = 10000
 # prime_smaller_than(n)
 
-for i in range(1000):
+for i in range(100000):
     sieve(n)
+'''
+
+
+0 -- 
+0 -- 
+0 -- 
+0 -- 
+0 -- 
+0 -- 
+0 -- 
+0 -- 
+0 -- 
+0 -- 
+0 -- 
+    
+
+'''
