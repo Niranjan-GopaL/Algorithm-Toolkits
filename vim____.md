@@ -184,4 +184,12 @@ p   - means paragraph
             :s/lol/lollllll/g    replaces ALL occurance of lol with lollll
 
 
-            
+- ctrl + a / ctrl +x ===> INCREASE NUM AND DECREASE NUM  
+
+
+
+- You can DIRECTELY JUMP to the next occurance of a word by using :-
+
+                            # <--- while over the word 
+
+

@@ -1,11 +1,14 @@
 ## 
 
+-[+] Vector to tree etc
+-[+] Check if your answers were right
+-[+] Do 3 other dsa
+
+
 -[+] Learn spanning trees
 -[+] Dijkstra's in DAG
--[] Vector to tree etc
--[] Check if your answers were right
 -[+] Nails too long 
--[+] GIve clothes for washing
+-[+] Give clothes for washing
 
 
 
