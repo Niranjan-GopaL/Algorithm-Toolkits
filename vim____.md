@@ -153,8 +153,8 @@ p   - means paragraph
 
 - after you had your fun with ci{ daa etc,
   you can jump to 20% of the file by --- 20%
-  you can jump to 50% of the file by --- 50%
   you can jump to 100% of the file by --- 100%
+  you can jump to 50% of the file by --- 50%
 
 
 -   search using /  (search forward)  
@@ -173,7 +173,6 @@ p   - means paragraph
 
 
 
-- 
 
                 ' goes back to the position tht you were in a last time
 
@@ -193,3 +192,5 @@ p   - means paragraph
                             # <--- while over the word 
 
 
+- Escape + tap on continue continously
+- 

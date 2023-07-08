@@ -1,10 +1,24 @@
 ## 
 
+
+-[] Retrieve clothes
+-[] Do pseudocritical
+-[] Do longest increasing subsequence
+
+-[] Projctions complete
+
+
+
+
+
+
+
+
+
+
 -[+] Vector to tree etc
 -[+] Check if your answers were right
 -[+] Do 3 other dsa
-
-
 -[+] Learn spanning trees
 -[+] Dijkstra's in DAG
 -[+] Nails too long 
