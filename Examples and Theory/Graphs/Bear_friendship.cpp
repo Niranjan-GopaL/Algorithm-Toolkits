@@ -73,9 +73,6 @@ void merge(ll u, ll v){
 
     sz[cv] += sz[cu];
     nedges[cv] += nedges[cu];
-
-
-
 }
 
 

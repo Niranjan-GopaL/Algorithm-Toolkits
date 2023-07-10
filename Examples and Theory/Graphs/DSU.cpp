@@ -67,7 +67,7 @@ ll find_optimized(ll v){
     // otpimized , now all the nodes along 
     // the path will point to the same parent
     // this decreses the entire path to a depth of 1 !!!!!
-    return parent_[v] = (parent_[v]);
+    return parent_[v] = find_optimized(parent_[v]);
 }
 
 

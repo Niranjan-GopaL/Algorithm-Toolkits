@@ -2,10 +2,7 @@ from heapq import heappop,heappush
 from queue import PriorityQueue
 
 def Prims_algorithm():
-    cost = 0
-
-    pq = []
-    heappush(pq,[0,0]) #cost,node
+    cost = 0; pq = []; heappush(pq,[0,0]) #cost,node
 
     while pq:
         print(f'\n-----------Queue -------------------\n\n')
@@ -19,6 +16,7 @@ def Prims_algorithm():
         for cost_v,v in graph[u]:
             if not vis[v]:
                 heappush(pq,[cost_v,v])
+                
         print(f'\n After looking at all the nieghbours of {u}     heap is : {pq} \n')
 
     return cost
@@ -40,6 +38,8 @@ points = [[3,12],[-2,5],[-4,1]]
 #     points.append(map(int,input().split()))
 
 points = [[3,12],[-2,5],[-4,1]]
+points = [[0,0],[2,2],[3,10],[5,2],[7,0]]
+
 
 n = len(points)
 vis = [0]*n

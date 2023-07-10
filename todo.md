@@ -1,12 +1,19 @@
 ## 
 
 
--[] Retrieve clothes
--[] Do pseudocritical
--[] Do longest increasing subsequence
+-[+] Retrieve clothes
+-[+] Do pseudocritical
+-[+] Do longest increasing subsequence
+
+-[] Prim's algo vedio
+-[] Sir's implementaion on prim's and checking if u get correct answer 
+-[] Krushkal's algo vedio
+-[] Prim's algo notes
+-[] Krushkals' algo notes
+
 
 -[] Projctions complete
-
+-[] Complex number notes
 
 
 
