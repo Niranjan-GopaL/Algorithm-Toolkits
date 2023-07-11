@@ -17,60 +17,30 @@ class DSU:
             self.sz[u] += self.sz[v]
 
 
-
-
-# DSU 
-def find(x):
-    if x == parent[x]:
-        return x
-    parent[x] = find(parent[x])
-    return parent[x]
-
-def union(u,v):
-    u = find(u)  
-    v = find(v)  
-    if u != v:
-        if sz[u] < sz[v]:
-            u,v = v,u
-        parent[v] = u
-        sz[u] += sz[v]
-
-
-def init():
-    global parent, sz
-    parent = [i for i in range(n)]
-    sz = [1] * n
-
 def Krushkal():
     dsu = DSU() 
-
+    edges.sort(key=lambda e:e[3])
     print(f'\n\nEdges inside Krushkal\'s : {edges} \n\n  ')
     print(f'Before')
-    # init()
     print(f'parent : {dsu.parents}')
     print(f'sizes  : {dsu.sz}\n\n\n')
     
-    
-    
     mst_w = 0
-    # for i,u,v,w in edges:
-    #     if find(u) != find(v):
-    #         union(u,v)
-    #         mst_w += w
-
     for i,u,v,w in edges:
         print(f'i : {i}  u : {u}  v : {v}  w : {w} ')
-        print(f'find(u) : {find(u)}  find(v) : {find(v)} ')
-        print(f'parent : {dsu.parents}')
-        print(f'sizes  : {dsu.sz}\n')
-        if find(u) != find(v):
+        print(f'find(u) : {dsu.find(u)}  dsu.find(v) : {dsu.find(v)} ')
+        if dsu.find(u) != dsu.find(v):
             dsu.union(u,v)
             mst_w += w
-            print(f'----- mst_w : {mst_w} <---------------------------------')
+        print(f'----- mst_w : {mst_w} <---------------------------------')
+        print(f'parent : {dsu.parents}')
+        print(f'sizes  : {dsu.sz}\n')
     
     print(f'\n\n\n\nAfter')
     print(f'parent : {dsu.parents}')
     print(f'sizes  : {dsu.sz}')
+
+
     return mst_w
 
 
@@ -122,19 +92,9 @@ def Find_Critical_and_Pseudo_Critical_Edges():
 2 3 2
 '''
 
-
-
-# n = int(input())
-# m = int(input())
 n = 5
 parent = [i for i in range(n)] 
 sz = [1]*n; edges = []
-# for i in range(m):
-#     u,v,weight = map(int,input().split())
-#     edges.append([i,u,v,weight])
-# edges.sort(key = lambda x:x[3])
-
-
 edges = [[0, 0, 1, 1], [1, 1, 2, 1], [2, 0, 3, 2], [6, 2, 3, 2], [3, 0, 4, 3], [4, 3, 4, 3], [5, 1, 4, 6]]
-print(f' ---------------- ORIGINAL ELDGES -------------- \n{edges} \n\n  ---------------------------')
+print(f'\n\n ---------------- ORIGINAL ELDGES -------------- \n{edges} \n\n  ---------------------------')
 print(Find_Critical_and_Pseudo_Critical_Edges())
