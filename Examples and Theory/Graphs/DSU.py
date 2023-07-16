@@ -2,7 +2,6 @@
 
 parent = [None]*10000
 
-
 # this is  BASIC OVERVIEW OF DFS
 def make(a):
     parent[a] = a

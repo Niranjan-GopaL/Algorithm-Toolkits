@@ -1,6 +1,5 @@
 from collections import deque 
 
-
 def is_valid(i,j):
     print(f' i : {i} and j : {j} are valid ? : {i>=1 and i<=8 and j>=1 and j<=8} \n')
     if (1<=i and i<=8) and (1<=j and j<=8): 
