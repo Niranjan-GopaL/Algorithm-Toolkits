@@ -16,7 +16,8 @@
 ## Screen control
 
 - zz (put that line in the middle of the screen)
-- zz ( bring it to the top of the screen)
+- zt ( bring it to the top of the screen)
+- zb ( bring it to the bottom of the screen)
 
 
 ## cool stuff done in zsh prompt
@@ -73,7 +74,6 @@ so d$  d^ v$ v^
             alt + 1 2 3 4 5 6 7 are much more easier and reachable
 
 - move a block:- 
-
         
                 9dd (so deletes next 9 lines and copies it the register)
 

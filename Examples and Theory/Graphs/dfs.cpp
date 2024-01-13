@@ -44,19 +44,20 @@ void solve(){
 
     fi(0,n){
         cin >> u >> v;
+        // array of vectors 
         edges[u].pb(v);
         edges[v].pb(u);
     }
-    //  PRINT YOU ADJACENCY LIST.
 
+    //  PRINT YOU ADJACENCY LIST.
     fi(0,n){
         for(ll j=0;j<edges[i].size();j++)
                 cout << i << "-> "<< edges[i][j] << "-> ";
         cout << "\n";
     }
 
-    fi(0,arr_template_size)phi[i]=-2;
 
-    
+
+    fi(0,arr_template_size)phi[i]=-2;
 
 }

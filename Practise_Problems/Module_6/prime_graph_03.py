@@ -49,18 +49,12 @@ def bfs(n,target):
         if num not in visited:
             visited.add(num)
             q.extend([
-
                 (i,depth+1) 
                 for i in generate_numbers(num)
-                
             ])
             print(f' Generated numbers for {num} are : {generate_numbers(num)}\n')
 
 
-
-
-# start,target = map(int, input().split())
-# in order to generate is_prime() array 
 start,target = (1033,8179)
 sieve(10000)
 print(f'All primes : {[i for i in range(10000) if is_prime[i] ]} ')

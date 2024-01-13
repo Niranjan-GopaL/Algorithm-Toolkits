@@ -44,7 +44,7 @@ def stack_dfs(i):
 # m = int(input())
 
 # # creating adjacency list
-# edges = [ [] for _ in range(n+]
+# edges = [ [] for _ in range(n)]
 # label = [0]*(n)
 
 # pairs = list(map(int,input().split()))
@@ -62,7 +62,7 @@ edges = [[1, 2, 3], [0, 3], [0, 3, 4], [0, 1, 2], [2, 5, 6], [4, 6], [5, 4, 7], 
  
 t = 0
 strt_time = [0]*n; finish_time= [0]*(n)
-phi = [-2]*n; phi[0]="_"
+phi = [-2]*n; phi[0]="_"   
 
 for i in range(n):
     if not label[i]:

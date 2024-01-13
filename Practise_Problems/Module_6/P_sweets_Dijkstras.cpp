@@ -18,6 +18,8 @@ ll a[arr_template_size];
 vector<ll> adj[arr_template_size];
 ll sweets[arr_template_size];
 
+
+
 ll bfs(ll d, ll s){
     int vis[n]={0};
     queue<pair <ll,ll>> q;
@@ -55,8 +57,6 @@ ll bfs(ll d, ll s){
 
 OUTPUT !!!!
 3 4 5 
-
-
 
 
 4 5 2
