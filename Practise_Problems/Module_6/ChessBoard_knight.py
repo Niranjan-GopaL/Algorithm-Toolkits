@@ -57,10 +57,10 @@ def solve():
 '''
 
 
-vis=[[0 for i in range(9)] for j in range(9)]
+vis=[[0 for i in range(101)] for j in range(101)]
 print(vis)
 
 si,sj = [1, 1]
-ti,tj = [8, 8]
+ti,tj = [3, 2]
 
 print(solve())
