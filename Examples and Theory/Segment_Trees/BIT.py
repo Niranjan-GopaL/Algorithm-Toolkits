@@ -2,8 +2,6 @@
 - USE CASE : PREFIX SUM [or sum from l to r]  IMPORTANT!!!
 - fill given data from 1 - n 
 - 0th idx is dummy
- 
-
 '''
 
 
