@@ -88,3 +88,7 @@ for _ in range(q):
 
 for i in ans:
     print(i)
+
+
+
+
